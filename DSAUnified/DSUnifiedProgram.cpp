@@ -8,14 +8,12 @@
 
 using namespace std;
 /*
-
 Remaining functions in tree
 implement graph DS
 implement heap DS
 other sorting algos
 can also add searching algorithms
 can add additional operations in Linked list , Stack and Queue.
-
 */
 
 int main()
