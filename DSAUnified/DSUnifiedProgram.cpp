@@ -4,12 +4,14 @@
 #include "Sorting.h"
 #include "LinkedList.h"
 #include "Stack.h"
+#include "Heap.h"
 
 using namespace std;
 /*
 
 Remaining functions in tree
-graph
+implement graph DS
+implement heap DS
 other sorting algos
 can also add searching algorithms
 can add additional operations in Linked list , Stack and Queue.
@@ -421,6 +423,9 @@ int main()
             cout << endl
                  << "Enter the number of elements in the array:";
             cin >> a;
+            if (a == 0)
+                goto g;
+
             ar = new int[a];
             cout << endl
                  << "Enter the elements of the array:" << endl;
@@ -436,7 +441,8 @@ int main()
                  << "3. Insertion sort" << endl
                  << "4. Quick sort" << endl
                  << "5. Merge sort" << endl
-                 << "6. Go Back" << endl;
+                 << "6. Heap sort" << endl
+                 << "7. Go Back" << endl;
             cin >> choice2;
 
             switch (choice2)
@@ -463,13 +469,13 @@ int main()
                 {
                     s.quick(ar, 0, a - 1);
                     s.printArray(ar, a);
+                    goto g;
                 }
 
-                {
-                    cout << *ar;
-                    cin.get();
-                    cin.get();
-                }
+                cout << *ar;
+                cin.get();
+                cin.get();
+
                 goto g;
             case 5:
                 cout << endl
@@ -478,6 +484,11 @@ int main()
                 s.printArray(ar, a);
                 goto g;
             case 6:
+                cout << endl
+                     << "After sorting your array by Heap sort." << endl;
+                s.heapSort(ar, a);
+                goto g;
+            case 7:
                 cout << endl
                      << "Going back....";
                 // sleep(2);
