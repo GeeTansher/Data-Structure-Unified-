@@ -14,6 +14,10 @@ implement heap DS
 other sorting algos
 can also add searching algorithms
 can add additional operations in Linked list , Stack and Queue.
+
+IMP - use new in all classes instances declaration first time we goes into hub for this have a variable for all each as 1 or 0 - try it
+ig - in heap we have to take an array for max and min and take whole array in staring and every time we go in heap hub
+
 */
 
 int main()
@@ -24,6 +28,7 @@ int main()
     LinkedList sl, dl;
     Sorting s;
     Tree t;
+    Heap h;
     int *ar;
     int a;
     while (1)
@@ -40,7 +45,8 @@ int main()
              << "3. Implementing Linked List" << endl
              << "4. Doing some sorting" << endl
              << "5. Implementing Binary Search Tree" << endl
-             << "6. Exit" << endl;
+             << "6. Implementing Heap" << endl
+             << "7. Exit" << endl;
 
         cin >> choice1;
 
@@ -549,6 +555,56 @@ int main()
             }
             break;
         case 6:
+        g13:
+
+            system("cls");
+            cout << ".......HEAP HUB.........";
+            cout << endl
+                 << "What do you want to do?";
+            cout << endl
+                 << "1. Insert in Max Heap" << endl
+                 << "2. Insert in Min Heap" << endl
+                 << "3. Delete from Max Heap" << endl
+                 << "4. Delete from Max Heap" << endl
+                 << "5. Display Max Heap" << endl
+                 << "6. Display Min Heap" << endl
+                 << "7. Go back" << endl;
+
+            cin >> choice2;
+
+            switch (choice2)
+            {
+            case 1:
+                h.toDo(1);
+                goto g13;
+            case 2:
+                h.toDo(2);
+                goto g13;
+            case 3:
+                h.toDo(3);
+                goto g13;
+            case 4:
+                h.toDo(4);
+                goto g13;
+            case 5:
+                h.toDo(5);
+                goto g13;
+            case 6:
+                h.toDo(6);
+                goto g13;
+            case 7:
+                cout << endl
+                     << "Going back....";
+                // sleep(2);
+                goto g;
+            default:
+                cout << "Entered something wrong...\nPlease re-enter...";
+                cin.get();
+                cin.get();
+                goto g12;
+            }
+            break;
+        case 7:
             cout << endl
                  << "Thank you for Visiting ....";
             // sleep(2);
