@@ -565,7 +565,7 @@ int main()
                  << "1. Insert in Max Heap" << endl
                  << "2. Insert in Min Heap" << endl
                  << "3. Delete from Max Heap" << endl
-                 << "4. Delete from Max Heap" << endl
+                 << "4. Delete from Min Heap" << endl
                  << "5. Display Max Heap" << endl
                  << "6. Display Min Heap" << endl
                  << "7. Go back" << endl;

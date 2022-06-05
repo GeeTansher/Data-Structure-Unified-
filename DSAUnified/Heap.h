@@ -21,6 +21,10 @@ public:
             cout << "Enter the element to be added in max heap:";
             cin >> n;
             maxarr.push_back(n);
+            for (int j = t / 2; j >= 0; j--)
+            {
+                maxHeapify(maxarr, t, j);
+            }
             for (int j = t / 2 - 1; j >= 0; j--)
             {
                 maxHeapify(maxarr, t, j);
@@ -49,15 +53,20 @@ public:
                 cin.get();
                 return;
             }
-            maxarr.erase(maxarr.begin());
-            if (maxarr.size() == 0)
+            int n=maxarr.size();
+            int temp = maxarr[n];
+            maxarr[n] = maxarr[0];
+            maxarr[0] = temp;
+            if (maxarr.size() == 1)
             {
+                maxarr.pop_back();
                 cout << "Deleted";
                 cin.get();
                 cin.get();
                 return;
             }
-            maxHeapify(maxarr, maxarr.size(), 0);
+            maxHeapify(maxarr, n, 0);
+            maxarr.pop_back();
             cout << "Deleted";
             cin.get();
             cin.get();
@@ -113,7 +122,7 @@ public:
         cin.get();
         cin.get();
     }
-    void maxHeapify(vector<int> arr, int n, int i)
+    void maxHeapify(vector<int> &arr, int n, int i)
     {
         int largest = i;
         int left = 2 * i + 1;
@@ -132,7 +141,7 @@ public:
         }
     }
 
-    void minHeapify(vector<int> arr, int n, int i)
+    void minHeapify(vector<int> &arr, int n, int i)
     {
         int smallest = i;
         int left = 2 * i + 1;
