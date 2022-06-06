@@ -10,13 +10,11 @@ using namespace std;
 /*
 Remaining functions in tree
 implement graph DS
-implement heap DS
 other sorting algos
 can also add searching algorithms
 can add additional operations in Linked list , Stack and Queue.
 
 IMP - use new in all classes instances declaration first time we goes into hub for this have a variable for all each as 1 or 0 - try it
-ig - in heap we have to take an array for max and min and take whole array in staring and every time we go in heap hub
 
 */
 
@@ -29,7 +27,8 @@ int main()
     Sorting s;
     Tree t;
     Heap h;
-    int *ar;
+    int sqc = 0, cqc = 0, ssc = 0, hc = 0;
+    int *ar; // array for sorting
     int a;
     while (1)
     {
@@ -562,8 +561,8 @@ int main()
             cout << endl
                  << "What do you want to do?";
             cout << endl
-                 << "1. Insert in Max Heap" << endl
-                 << "2. Insert in Min Heap" << endl
+                 << "1. Make a Max Heap" << endl
+                 << "2. Make a Min Heap" << endl
                  << "3. Delete from Max Heap" << endl
                  << "4. Delete from Min Heap" << endl
                  << "5. Display Max Heap" << endl
