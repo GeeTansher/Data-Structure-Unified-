@@ -561,8 +561,8 @@ int main()
             cout << endl
                  << "What do you want to do?";
             cout << endl
-                 << "1. Make a Max Heap" << endl
-                 << "2. Make a Min Heap" << endl
+                 << "1. Insert in Max Heap" << endl
+                 << "2. Insert in Min Heap" << endl
                  << "3. Delete from Max Heap" << endl
                  << "4. Delete from Min Heap" << endl
                  << "5. Display Max Heap" << endl

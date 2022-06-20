@@ -2,6 +2,7 @@
 #define DSAUNIFIED_HEAP_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 /*
 create heap after adding every one element - can we do by vector????
@@ -9,171 +10,153 @@ create heap after adding every one element - can we do by vector????
 class Heap
 {
 private:
-    int *maxArr, *minArr;
-    int n = 0, m = 0;
+    // int *maxArr, *minArr;
+    vector<int> maxVec, minVec;
+    // int n = 0, m = 0;
 
 public:
     void toDo(int i)
     {
         if (i == 1)
         {
-            if (n != 0)
-            {
-                delete[] maxArr;
-            }
-            cout << "Enter the no of elements in array:";
+            int n;
+            cout << "Enter the element to be inserted:";
             cin >> n;
-            maxArr = new int[n];
-            for (int i = 0; i < n; i++)
+            maxVec.push_back(n);
+            for (int j = maxVec.size() / 2; j >= 0; j--)
             {
-                cin >> maxArr[i];
+                maxHeapify(maxVec, maxVec.size(), j);
             }
-            for (int j = n / 2; j >= 0; j--)
-            {
-                maxHeapify(maxArr, n, j);
-            }
-            cout << "Max Heap created";
+            cout << "Element inserted in Max Heap";
             cin.get();
             cin.get();
         }
         else if (i == 2)
         {
-            if (m != 0)
+            int n;
+            cout << "Enter the element to be inserted:";
+            cin >> n;
+            minVec.push_back(n);
+            for (int j = minVec.size() / 2; j >= 0; j--)
             {
-                delete[] minArr;
+                maxHeapify(minVec, minVec.size(), j);
             }
-            cout << "Enter the no of elements in array:";
-            cin >> m;
-            minArr = new int[m + 1];
-            for (int i = 0; i < m; i++)
-            {
-                cin >> minArr[i];
-            }
-            // maxarr.push_back(n);
-            for (int j = m / 2; j >= 0; j--)
-            {
-                minHeapify(minArr, m, j);
-            }
-            cout << "Min Heap created";
+            cout << "Element inserted in Min Heap";
             cin.get();
             cin.get();
         }
         else if (i == 3)
         {
-            if (n == 0)
+            if (maxVec.size() == 0)
             {
                 cout << "No element to be deleted from heap";
                 cin.get();
                 cin.get();
                 return;
             }
-            swap(maxArr[n - 1], maxArr[0]);
-            if (n == 1)
+            if (maxVec.size() == 1)
             {
-                n--;
+                maxVec.pop_back();
                 cout << "Deleted";
                 cin.get();
                 cin.get();
                 return;
             }
-            maxHeapify(maxArr, n - 1, 0);
-            n--;
+            swap(maxVec[0], maxVec[maxVec.size() - 1]);
+            maxVec.pop_back();
+            maxHeapify(maxVec, maxVec.size(), 0);
             cout << "Deleted";
             cin.get();
             cin.get();
         }
         else if (i == 4)
         {
-            if (m == 0)
+            if (minVec.size() == 0)
             {
                 cout << "No element to be deleted from heap";
                 cin.get();
                 cin.get();
                 return;
             }
-            swap(minArr[n - 1], minArr[0]);
-            if (m == 1)
+            if (minVec.size() == 1)
             {
-                m--;
+                minVec.pop_back();
                 cout << "Deleted";
                 cin.get();
                 cin.get();
                 return;
             }
-            minHeapify(minArr, m - 1, 0);
-            m--;
+            swap(minVec[0], minVec[minVec.size() - 1]);
+            minVec.pop_back();
+            minHeapify(minVec, minVec.size(), 0);
             cout << "Deleted";
             cin.get();
             cin.get();
         }
         else if (i == 5)
         {
-            if (n == 0)
+            if (maxVec.size() == 0)
             {
                 cout << "Heap is empty!!";
                 cin.get();
                 cin.get();
                 return;
             }
-            displayHeap(maxArr, n);
+            displayHeap(maxVec);
         }
         else if (i == 6)
         {
-            if (m == 0)
+            if (minVec.size() == 0)
             {
                 cout << "Heap is empty!!";
                 cin.get();
                 cin.get();
                 return;
             }
-            displayHeap(minArr, m);
+            displayHeap(minVec);
         }
     }
-    void displayHeap(int *arr, int k)
+    void displayHeap(vector<int> &v)
     {
-        for (int i = 0; i < k; i++)
+        for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
         {
-            cout << arr[i] << " ";
+            cout << *it << " ";
         }
         cout << endl;
         cin.get();
         cin.get();
     }
-    void maxHeapify(int *arr, int n, int i)
+    void maxHeapify(vector<int> &v, int n, int i)
     {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        if (left < n && arr[left] > arr[largest])
+        if (left < n && v[left] > v[largest])
             largest = left;
-        if (right < n && arr[right] > arr[largest])
+        if (right < n && v[right] > v[largest])
             largest = right;
 
         if (largest != i)
         {
-            int temp = arr[largest];
-            arr[largest] = arr[i];
-            arr[i] = temp;
-            maxHeapify(arr, n, largest);
+            swap(v[largest], v[i]);
+            maxHeapify(v, n, largest);
         }
     }
 
-    void minHeapify(int *arr, int n, int i)
+    void minHeapify(vector<int> &v, int n, int i)
     {
         int smallest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;
-        if (left < n && arr[left] < arr[smallest])
+        if (left < n && v[left] < v[smallest])
             smallest = left;
-        if (right < n && arr[right] < arr[smallest])
+        if (right < n && v[right] < v[smallest])
             smallest = right;
 
         if (smallest != i)
         {
-            int temp = arr[smallest];
-            arr[smallest] = arr[i];
-            arr[i] = temp;
-            minHeapify(arr, n, smallest);
+            swap(v[smallest], v[i]);
+            minHeapify(v, n, smallest);
         }
     }
 };

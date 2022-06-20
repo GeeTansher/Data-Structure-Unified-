@@ -174,7 +174,7 @@ public:
         {
             heapify(arr, t, i);
         }
-        for (int i = t - 1; i >= 0; i--)
+        for (int i = t - 1; i > 0; i--)
         {
             int temp = arr[i];
             arr[i] = arr[0];
